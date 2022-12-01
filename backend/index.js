@@ -18,9 +18,6 @@ app.use(express.json());
 //use routes
 app.use("/api", userRoutes);
 
-app.get("/", (req, res) => {
-  res.send("nishant");
-});
 
 app.listen(port, () => {
   console.log(`this server is running on port ${port}`);

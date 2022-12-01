@@ -5,12 +5,10 @@ const {
   createToken,
   comparePassword,
 } = require("../services/authServices");
-// const createToken = require("../services/authServices");
-// const comparePassword = require("../services/authServices");
 
 module.exports.register = async (req, res) => {
   const errors = validationResult(req);
-  console.log(errors);
+  console.log("error below", errors);
   if (errors.isEmpty()) {
     console.log("validation implemented");
     const { name, email, password } = req.body;
@@ -23,6 +21,7 @@ module.exports.register = async (req, res) => {
           name: name,
           email: email,
           password: hashed,
+          // password: password,
         });
         const token = createToken({ id: user._id, name: user.name });
         return res
