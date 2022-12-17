@@ -14,14 +14,15 @@ module.exports.register = async (req, res) => {
     const { name, email, password } = req.body;
     try {
       const emailExist = await userModel.findOne({ email });
-      console.log(emailExist);
+      console.log("email", emailExist);
       if (!emailExist) {
+        console.log('firsst')
+        console.log('sec')
         const hashed = await hashedPassword(password);
         const user = await userModel.create({
           name: name,
           email: email,
           password: hashed,
-          // password: password,
         });
         const token = createToken({ id: user._id, name: user.name });
         return res
@@ -33,7 +34,7 @@ module.exports.register = async (req, res) => {
           .json({ errors: [{ msg: `${email} is already taken` }] });
       }
     } catch (error) {
-      console.log(error.message);
+      console.log('500 error', error.message);
       return res.status(500).json("server internal error!");
     }
   } else {
