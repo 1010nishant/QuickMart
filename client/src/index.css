@@ -8,7 +8,7 @@
     }
 
     .btn-blue {
-        @apply bg-indigo-600 text-white rounded-md capitalize font-medium px-4 mt-4 py-3;
+        @apply bg-indigo-600 text-white rounded-md capitalize font-medium px-4 mt-4 py-3 cursor-pointer;
     }
 
     .form-control {

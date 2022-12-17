@@ -16,6 +16,7 @@ class Category {
         } else {
             return res.status(401).json({ errors: errors.array() })
         }
+
     }
 }
 
