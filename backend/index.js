@@ -1,9 +1,11 @@
 const express = require("express");
 const env = require("./config/envConfig");
-const app = express();
 const connect = require("./config/db");
 const userRoutes = require("./routes/users/userRoutes");
+const categoryRoutes = require('./routes/users/categoryRoutes')
 const cors = require("cors");
+
+const app = express();
 
 const port = env.PORT || 5000;
 
@@ -17,10 +19,8 @@ app.use(express.json());
 
 //use routes
 app.use("/api", userRoutes);
+app.use('/api', categoryRoutes)
 
-app.get("/", (req, res) => {
-  res.send("nishant");
-});
 
 app.listen(port, () => {
   console.log(`this server is running on port ${port}`);

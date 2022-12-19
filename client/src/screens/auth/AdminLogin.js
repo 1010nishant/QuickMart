@@ -76,6 +76,7 @@ function AdminLogin() {
               />
             </svg>
             <input
+              size="30"
               className="pl-2 outline-none border-none"
               type="text"
               name="email"

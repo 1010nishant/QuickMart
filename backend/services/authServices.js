@@ -6,7 +6,7 @@ const hashedPassword = async (password) => {
   const salt = await bcrypt.genSalt(10);
   const hashed = await bcrypt.hash(password, salt);
   return hashed;
-};
+}
 
 const createToken = (user) => {
   return jwt.sign({ user }, JWT_SECRET_KEY, {

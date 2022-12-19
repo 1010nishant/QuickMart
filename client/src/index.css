@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    .btn-indigo {
+        @apply text-white bg-violet-500 px-4 py-2 rounded-md;
+    }
+
+    .btn-blue {
+        @apply bg-indigo-600 text-white rounded-md capitalize font-medium px-4 mt-4 py-3 cursor-pointer;
+    }
+
+    .form-control {
+        @apply border p-3 rounded-md outline-1 w-full;
+    }
+
+    .alert-success {
+        @apply bg-indigo-100 text-indigo-900 p-3 mb-2 rounded-sm text-sm font-medium border-l-4 border-indigo-600
+    }
+}

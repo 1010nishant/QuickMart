@@ -5,19 +5,19 @@ const {
   createToken,
   comparePassword,
 } = require("../services/authServices");
-// const createToken = require("../services/authServices");
-// const comparePassword = require("../services/authServices");
 
 module.exports.register = async (req, res) => {
   const errors = validationResult(req);
-  console.log(errors);
+  console.log("error below", errors);
   if (errors.isEmpty()) {
     console.log("validation implemented");
     const { name, email, password } = req.body;
     try {
       const emailExist = await userModel.findOne({ email });
-      console.log(emailExist);
+      console.log("email", emailExist);
       if (!emailExist) {
+        console.log('firsst')
+        console.log('sec')
         const hashed = await hashedPassword(password);
         const user = await userModel.create({
           name: name,
@@ -34,7 +34,7 @@ module.exports.register = async (req, res) => {
           .json({ errors: [{ msg: `${email} is already taken` }] });
       }
     } catch (error) {
-      console.log(error.message);
+      console.log('500 error', error.message);
       return res.status(500).json("server internal error!");
     }
   } else {
