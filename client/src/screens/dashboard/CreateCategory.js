@@ -3,21 +3,24 @@ import { Link, useNavigate } from 'react-router-dom';
 import ScreenHeader from '../../components/ScreenHeader';
 import { useCreateMutation } from '../../store/services/CategoryService';
 import Wrapper from './Wrapper';
-
+import { useDispatch } from 'react-redux';
+import { setSuccess } from '../../store/reducers/globalReducer';
 
 
 const CreateCategory = () => {
     const [catval, setCatval] = useState('')
     const [saveCategory, response] = useCreateMutation()
-    console.log(response)
+    console.log('response from useCreateMutation', response)
     const errors = response?.error?.data?.errors ? response?.error?.data?.errors : []
     const submitCategory = e => {
         e.preventDefault();
         saveCategory({ name: catval })
     }
     const navigate = useNavigate()
+    const dispatch = useDispatch()
     useEffect(() => {
         if (response?.isSuccess) {
+            dispatch(setSuccess(response?.data?.message))
             navigate('/dashboard/categories')
         }
     }, [response?.isSuccess])

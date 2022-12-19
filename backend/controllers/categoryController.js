@@ -7,9 +7,11 @@ class Category {
         const { name } = req.body;
         if (errors.isEmpty()) {
             const exist = await CategoryModel.findOne({ name })
-            if (!exist) {
+            console.log('exist in cat controller', exist)
+            if (exist == null) {
                 await CategoryModel.create({ name })
-                return res.status(201).json({ message: 'category has been created' })
+                console.log("in null exist")
+                return res.status(201).json({ message: `your category ${name} has been created successfully` })
             } else {
                 return res.status(401).json({ errors: [{ msg: `${name} is already exist` }] })
             }

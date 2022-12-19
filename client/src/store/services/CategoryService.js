@@ -6,6 +6,12 @@ const CategoryService = createApi({
     baseQuery: fetchBaseQuery({
         //backend server url
         baseUrl: "http://localhost:5000/api/",
+        prepareHeaders: (headers, state) => {
+            const reduers = state.getState();
+            const token = reduers?.authReducer?.adminToken;
+            headers.set('authorization', token ? `bearer ${token}` : '')
+            return headers;
+        }
     }),
     endpoints: (builder) => {
         return {

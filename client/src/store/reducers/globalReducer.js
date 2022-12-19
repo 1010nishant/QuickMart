@@ -5,12 +5,17 @@ const globalReducer = createSlice({
     initialState: {
         success: ''
     },
-    reducer: {
+
+    reducers: {
         setSuccess: (state, action) => {
+            console.log('action in setSuccess', action)
             state.success = action.payload;
+        },
+        clearMessage: (state) => {
+            state.success = '';
         }
     }
 })
 
-export const { setSuccess } = globalReducer.actions;
+export const { setSuccess, clearMessage } = globalReducer.actions;
 export default globalReducer.reducer

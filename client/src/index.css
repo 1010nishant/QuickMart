@@ -14,4 +14,8 @@
     .form-control {
         @apply border p-3 rounded-md outline-1 w-full;
     }
+
+    .alert-success {
+        @apply bg-indigo-100 text-indigo-900 p-3 mb-2 rounded-sm text-sm font-medium border-l-4 border-indigo-600
+    }
 }
